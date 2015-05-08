@@ -1,0 +1,22 @@
+<ion-view view-title="详情">
+  <ion-content ng-init="loadSample()">
+    <div class="card">
+      <div class="item item-image">
+        <img ng-src="http://localhost:3000/{{sampleOrder.image_primary.url}}">
+      </div>
+
+      <h3>{{sampleOrder.sample_number}}</h3>
+      <p>November 05, 1955</p>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" ng-click="addToCart()">
+          <i class="icon ion-star"></i>
+          喜欢
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-plus"></i>
+          加入购物车
+        </a>
+      </div>
+  </ion-content>
+</ion-view>

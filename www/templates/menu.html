@@ -18,18 +18,25 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
+        <ion-item nav-clear menu-close ng-click="login()" ng-show="showMenu()">
+          登录
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
+        <ion-item nav-clear menu-close ng-click="logout()" ng-hide="showMenu()">
+          退出
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
+        <ion-item nav-clear menu-close href="#app/sampleorders">
+          款式
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
+        <ion-item nav-clear menu-close href="#app/cart">
+          购物车
         </ion-item>
+        <ion-item nav-clear menu-close href="#app/orders">
+          我的订单
+        </ion-item>
+        <ion-item nav-clear menu-close href="#app/favorites">
+          收藏
+        </ion-item>
+
       </ion-list>
     </ion-content>
   </ion-side-menu>

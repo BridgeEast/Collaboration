@@ -1,0 +1,12 @@
+<ion-view view-title="款式">
+  <ion-content ng-init="load()">
+    <div class="list" ng-repeat="sampleOrder in sampleOrders">
+
+      <a class="item item-thumbnail-left" href="#app/sampleorder/{{sampleOrder.id}}">
+        <img ng-src="http://localhost:3000/{{ sampleOrder.image_primary.url }}">
+        <h2>{{sampleOrder.sample_number}}</h2>
+        <p>{{sampleOrder.reference_price}}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

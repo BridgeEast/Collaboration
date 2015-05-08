@@ -1,0 +1,27 @@
+<ion-view view-title="购物车">
+  <ion-content>
+    <div class="card" ng-hide="show()">
+      <div class="item item-text-wrap text-center">
+        您还没有登录，请登录后继续.
+      </div>
+      <div class="item item-text-wrap">
+        <button class="button button-block  button-outline button-positive" ng-click="loginModal()">
+          登录
+        </button>
+      </div>
+    </div>
+
+    <div class="list" ng-show="show()" ng-init="loadCart()">
+      <a class="item item-avatar" ng-repeat="item in items">
+        <img ng-src="http://localhost:3000/{{item.image_primary}}">
+        <h2>{{item.sample_number}}</h2>
+        <p>{{item.count}}</p>
+      </a>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer" ng-show="show()">
+    <button class="button button-large button-assertive pull-right" ng-click="createOrder()">
+      生成订单
+    </button>
+  </div>
+</ion-view>

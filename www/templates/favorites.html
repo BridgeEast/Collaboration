@@ -1,0 +1,20 @@
+<ion-view view-title="收藏">
+  <ion-content>
+    <div class="card" ng-hide="show()">
+      <div class="item item-text-wrap text-center">
+        您还没有登录，请登录后继续.
+      </div>
+      <div class="item item-text-wrap">
+        <button class="button button-block  button-outline button-positive" ng-click="loginModal()">
+          登录
+        </button>
+      </div>
+    </div>
+    <div class="card" ng-init="loadFavorites()" ng-show="show()">
+      <a class="item item-avatar" ng-repeat="favorite in favorites">
+        <h2>{{favorite.sample_order_id}}</h2>
+        <p>{{favorite.id}}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

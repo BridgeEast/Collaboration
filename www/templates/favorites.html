@@ -12,8 +12,8 @@
     </div>
     <div class="card" ng-init="loadFavorites()" ng-show="show()">
       <a class="item item-avatar" ng-repeat="favorite in favorites">
-        <h2>{{favorite.sample_order_id}}</h2>
-        <p>{{favorite.id}}</p>
+        <img ng-src="http://localhost:3000/{{favorite.image_primary.url}}">
+        <h2>{{favorite.sample_number}}</h2>
       </a>
     </div>
   </ion-content>

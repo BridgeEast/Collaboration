@@ -2,21 +2,52 @@
   <ion-content ng-init="loadSample()">
     <div class="card">
       <div class="item item-image">
-        <img ng-src="http://localhost:3000/{{sampleOrder.image_primary.url}}">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide ng-repeat="img in ['image_primary', 'image_front']">
+            <img ng-src="http://localhost:3000/{{sampleOrder[img].url}}">
+          </ion-slide>
+        </ion-slide-box>
       </div>
 
       <h3>{{sampleOrder.sample_number}}</h3>
-      <p>November 05, 1955</p>
+      <p>{{sampleOrder.created_at}}</p>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" ng-click="addToCart()">
+        <a class="tab-item" ng-click="addToFavorite()">
           <i class="icon ion-star"></i>
           喜欢
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" ng-click="addToCart()">
           <i class="icon ion-plus"></i>
           加入购物车
         </a>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">款号:{{sampleOrder.sample_number}}</div>
+        <div class="col">筒宽:{{sampleOrder.placket_width}}</div>
+      </div>
+      <div class="row">
+        <div class="col">尺寸:{{sampleOrder.size}}</div>
+        <div class="col">码数:{{sampleOrder.yardage}}</div>
+      </div>
+      <div class="row">
+        <div class="col">中后长:{{sampleOrder.center_back_length}}</div>
+        <div class="col">肩宽:{{sampleOrder.shoulder}}</div>
+      </div> 
+      <div class="row">
+        <div class="col">脚宽:{{sampleOrder.foot_breadth}}</div>
+        <div class="col">袖长:{{sampleOrder.cuff}}</div>
+      </div> 
+      <div class="row">
+        <div class="col">袖夹:{{sampleOrder.sleeve}}</div>
+        <div class="col">袖口:{{sampleOrder.sleeve_clip}}</div>
+      </div> 
+      <div class="row">
+        <div class="col">胸宽:{{sampleOrder.chest}}</div>
+      </div>
+      <div class="row">
+        <div class="col">工艺:{{sampleOrder.craft}}</div>
       </div>
   </ion-content>
 </ion-view>

@@ -99,7 +99,13 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('SampleOrderDetailCtrl', function($scope, $stateParams, $http){
+.controller('SampleOrderDetailCtrl', function($scope, $stateParams, $http, $ionicBackdrop, $ionicPopup, $window){
+    $scope.show = function(){
+      return App.helpers.logined();
+    }
+    $scope.loginModal = function(){
+      App.helpers.doLogin();
+    }
     $scope.loadSample = function(){
       $http({
         method: 'GET',
@@ -117,7 +123,55 @@ angular.module('starter.controllers', [])
 
     $scope.addToCart = function(){
       console.log($stateParams.sampleorderid)
+        if (!$scope.show()){
+        $scope.loginModal();
+        return;
+      }
+      $ionicBackdrop.retain();
+      $http({ 
+        method: 'POST',
+        url: App.domain + '/api/carts',
+        params: { sample_order_id: $stateParams.sampleorderid, access_token: App.accessToken }
+      })
+      .success(function(data){ 
+        $ionicBackdrop.release();
+        $window.location.reload();
+      })
+      .error(function(){ 
+        $ionicBackdrop.release(); 
+        $scope.showAlert();
+      })
     }
+
+    $scope.addToFavorite = function(){ 
+      if (!$scope.show()){
+        $scope.loginModal();
+        return;
+      }
+      $ionicBackdrop.retain();
+      $http({ 
+        method: 'POST',
+        url: App.domain + '/api/favorites',
+        params: { access_token: App.accessToken, sample_order_id: $stateParams.sampleorderid }
+      })
+      .success(function(){ 
+        $ionicBackdrop.release(); 
+      })
+      .error(function(){ 
+        $ionicBackdrop.release();
+        $scope.showAlert();
+      })
+    }
+    $scope.showAlert = function() {
+      var alertPopup = $ionicPopup.alert({
+        title: '提示',
+        template: '添加失败！'
+      });
+      alertPopup.then(function(res) {
+        console.log('Thank you for using our app')
+      });
+    }
+
 })
 
 .controller('CartCtrl', function($scope, $http, $ionicBackdrop, $ionicPopup) {

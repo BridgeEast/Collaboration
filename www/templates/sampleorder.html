@@ -4,7 +4,7 @@
       <div class="item item-image">
         <ion-slide-box on-slide-changed="slideHasChanged($index)">
           <ion-slide ng-repeat="img in ['image_primary', 'image_front']">
-            <img ng-src="http://localhost:3000/{{sampleOrder[img].url}}">
+            <img class="image" ng-src="http://localhost:3000/{{sampleOrder[img].url}}">
           </ion-slide>
         </ion-slide-box>
       </div>

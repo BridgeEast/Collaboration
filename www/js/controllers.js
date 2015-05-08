@@ -155,7 +155,8 @@ angular.module('starter.controllers', [])
         params: { access_token: App.accessToken, sample_order_id: $stateParams.sampleorderid }
       })
       .success(function(){ 
-        $ionicBackdrop.release(); 
+        $ionicBackdrop.release();
+        $window.location.reload();
       })
       .error(function(){ 
         $ionicBackdrop.release();
